@@ -22,7 +22,7 @@ spec:
         - name: nodejs-app-container
           # Replace with the name of your container image
           # Example: my-dockerhub-username/my-nodejs-app:1.0.0
-          image: 033849514070.dkr.ecr.ap-south-1.amazonaws.com/backend/dummy-backend-app:18828344349
+          image: 033849514070.dkr.ecr.ap-south-1.amazonaws.com/backend/dummy-backend-app:18833416214
           imagePullPolicy: Always
           # Define the port your application listens on
           ports:
