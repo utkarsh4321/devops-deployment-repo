@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: reactjs-app-deployment
   namespace: frontend-namespace
+  annotations:
+    reloader.stakater.com/auto: "true"
   labels:
     app: reactjs-app
 spec:
