@@ -4,6 +4,10 @@ metadata:
   # The name of your deployment
   name: nodejs-app-deployment
   namespace: backend-namespace
+  annotations:
+    reloader.stakater.com/auto: "true"
+    # configmap.reloader.stakater.com/reload: "nodejsapp-config"
+    # secret.reloader.stakater.com/reload: "nodejsapp-secret"
   # Labels to identify your deployment
   labels:
     app: nodejs-app
@@ -22,7 +26,7 @@ spec:
         - name: nodejs-app-container
           # Replace with the name of your container image
           # Example: my-dockerhub-username/my-nodejs-app:1.0.0
-          image: 033849514070.dkr.ecr.ap-south-1.amazonaws.com/backend/dummy-backend-app:latest
+          image: 033849514070.dkr.ecr.ap-south-1.amazonaws.com/backend/dummy-backend-app:18860395631
           imagePullPolicy: Always
           # Define the port your application listens on
           ports:
