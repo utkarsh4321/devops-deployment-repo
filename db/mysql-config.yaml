@@ -7,3 +7,5 @@ metadata:
   creationTimestamp: null
   name: mysql-config
   namespace: db-namespace
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1" # Apply first

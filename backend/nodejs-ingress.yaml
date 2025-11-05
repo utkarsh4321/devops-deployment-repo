@@ -6,6 +6,7 @@ metadata:
   annotations:
     #   #   # This annotation is specific to the NGINX Ingress controller
     nginx.ingress.kubernetes.io/rewrite-target: /
+    argocd.argoproj.io/sync-wave: "0" # Apply after secrets and deployments
 spec:
   rules:
     - host: api.localhost

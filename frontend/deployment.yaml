@@ -5,6 +5,7 @@ metadata:
   namespace: frontend-namespace
   annotations:
     reloader.stakater.com/auto: "true"
+    argocd.argoproj.io/sync-wave: "1" # Apply after db and backend
   labels:
     app: reactjs-app
 spec:
