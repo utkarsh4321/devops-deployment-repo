@@ -8,4 +8,5 @@ metadata:
   name: mysql-config
   namespace: db-namespace
   annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Apply first
+    argocd.argoproj.io/sync-wave: "-5" # Apply first
+    argocd.argoproj.io/hook: Sync
