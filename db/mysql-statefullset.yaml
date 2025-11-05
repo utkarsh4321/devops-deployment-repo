@@ -4,9 +4,11 @@ metadata:
   name: mysql-statefulset
   namespace: db-namespace
   annotations:
-    # reloader.stakater.com/auto: "true"
+    reloader.stakater.com/auto: "true"
     # configmap.reloader.stakater.com/reload: "mysql-config"
     # secret.reloader.stakater.com/reload: "mysql-secret"
+    argocd.argoproj.io/sync-wave: "-1" # Apply first
+    argocd.argoproj.io/hook: Sync
 spec:
   replicas: 1
   selector:
@@ -47,6 +49,8 @@ kind: Service
 metadata:
   name: mysql-headless-service
   namespace: db-namespace
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1" # Apply first
 spec:
   selector:
     app: mysql

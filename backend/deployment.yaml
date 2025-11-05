@@ -8,7 +8,9 @@ metadata:
     reloader.stakater.com/auto: "true"
     # configmap.reloader.stakater.com/reload: "nodejsapp-config"
     # secret.reloader.stakater.com/reload: "nodejsapp-secret"
-  # Labels to identify your deployment
+    # Labels to identify your deployment
+    argocd.argoproj.io/sync-wave: "0" # Apply first
+    argocd.argoproj.io/hook: Sync
   labels:
     app: nodejs-app
 spec:
@@ -89,6 +91,8 @@ metadata:
   # The name of your service
   name: nodejs-app-service
   namespace: backend-namespace
+  annotations:
+    argocd.argoproj.io/sync-wave: "0" # Apply first
 spec:
   # This selector links the service to your deployment pods
   selector:
