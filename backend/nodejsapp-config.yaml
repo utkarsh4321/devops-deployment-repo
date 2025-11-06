@@ -4,7 +4,7 @@ metadata:
   name: nodejsapp-config
   namespace: backend-namespace
   annotations:
-    argocd.argoproj.io/sync-wave: "-2" # Apply after secrets and deployments
+    argocd.argoproj.io/sync-wave: "0" # Apply after secrets and deployments
 data:
   DB_HOST: mysql-headless-service.db-namespace
   DB_DATABASE: my_testing_db
