@@ -43,7 +43,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: nodejsapp-secret
-                  key: DB_USER
+                  key: DB_USERNAME
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
