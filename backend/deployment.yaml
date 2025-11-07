@@ -5,9 +5,9 @@ metadata:
   name: nodejs-app-deployment
   namespace: backend-namespace
   annotations:
-    reloader.stakater.com/auto: "true"
-    # configmap.reloader.stakater.com/reload: "nodejsapp-config"
-    # secret.reloader.stakater.com/reload: "nodejsapp-secret"
+    # reloader.stakater.com/auto: "true"
+    configmap.reloader.stakater.com/reload: "nodejsapp-config"
+    secret.reloader.stakater.com/reload: "nodejsapp-secret"
     # Labels to identify your deployment
     argocd.argoproj.io/sync-wave: "0" # Apply first
     argocd.argoproj.io/hook: Sync
