@@ -9,5 +9,5 @@ metadata:
   namespace: db-namespace
   annotations:
     argocd.argoproj.io/sync-wave: "-3" # Apply first
-    argocd.argoproj.io/hook: Sync
+    # argocd.argoproj.io/hook: Sync
     # reloader.stakater.com/auto: "true"

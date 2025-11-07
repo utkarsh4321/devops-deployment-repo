@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: db-application
+  name: dbs-application
   namespace: argocd # Argo CD namespace
 spec:
   project: default
