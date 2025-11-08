@@ -5,8 +5,8 @@ metadata:
   namespace: db-namespace
   annotations:
     # reloader.stakater.com/auto: "true"
-    configmap.reloader.stakater.com/reload: "mysql-config"
-    secret.reloader.stakater.com/reload: "mysql-secret"
+    # configmap.reloader.stakater.com/reload: "mysql-config"
+    # secret.reloader.stakater.com/reload: "mysql-secret"
     argocd.argoproj.io/sync-wave: "-1" # Apply first
     argocd.argoproj.io/hook: Sync
 spec:
@@ -26,8 +26,8 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql-secret
-                  key: MYSQL_ROOT_PASSWORD
+                  name: mysql-root-secret
+                  key: password
             - name: MYSQL_DATABASE
               valueFrom:
                 configMapKeyRef:
