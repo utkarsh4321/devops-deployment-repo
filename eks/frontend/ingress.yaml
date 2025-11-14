@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  namespace: frontend-namespace
+  annotations:
+    #   #   # This annotation is specific to the NGINX Ingress controller
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    argocd.argoproj.io/sync-wave: "1" # Apply after db and backend
+spec:
+  rules:
+    - host: front.test.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: reactjs-app-service
+                port:
+                  number: 80

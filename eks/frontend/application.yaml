@@ -1,17 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: secret-store-application
+  name: frontend-application
   namespace: argocd # Argo CD namespace
 spec:
   project: default
   source:
     repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
     targetRevision: main # Or your branch
-    path: external-secret # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
+    path: frontend # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: default # Target namespace in the cluster
+    namespace: frontend-namespace # Target namespace in the cluster
   syncPolicy:
     automated:
       prune: true # Deletes old resources
@@ -21,4 +23,3 @@ spec:
       - PrunePropagationPolicy=foreground
       - PruneLast=true
       - Replace=true # Key for Secrets: Forces delete + recreate on immutable field changes
-      - ApplyOutOfSyncOnly=true

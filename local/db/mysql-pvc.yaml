@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: db-namespace
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3" # Apply first
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # storageClassName: ""
+  storageClassName: standard
+  resources:
+    requests:
+      storage: 1Gi
+  # volumeName: mysql-pv

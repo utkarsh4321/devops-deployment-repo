@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress-http
+  namespace: argocd # Or the namespace where Argo CD is installed
+  # annotations:
+  #   # Optional: Add specific Ingress controller annotations if needed
+  #   # For Nginx Ingress Controller:
+  #   nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+  #   nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+spec:
+  rules:
+    - host: argocd.private.localhost # Replace with your desired hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80 # Argo CD's HTTP port

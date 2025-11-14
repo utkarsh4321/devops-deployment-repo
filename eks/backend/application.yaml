@@ -1,17 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: db-application
+  name: backend-application
   namespace: argocd # Argo CD namespace
 spec:
   project: default
   source:
     repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
     targetRevision: main # Or your branch
-    path: db # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
+    path: backend # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
+    directory:
+      recurse: true
   destination:
-    server: https://kubernetes.default.svc
-    namespace: db-namespace # Target namespace in the cluster
+    server: https://kubernetes.default.svc # change cluster accordingly
+    namespace: backend-namespace # Target namespace in the cluster
   syncPolicy:
     automated:
       prune: true # Deletes old resources
