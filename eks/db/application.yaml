@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
     targetRevision: main # Or your branch
-    path: db # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
+    path: eks/db # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
     directory:
       recurse: true
   destination:
