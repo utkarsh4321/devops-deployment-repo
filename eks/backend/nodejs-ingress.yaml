@@ -8,6 +8,8 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     argocd.argoproj.io/sync-wave: "0" # Apply after secrets and deployments
     argocd.argoproj.io/hook: PostSync
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
     - host: api.test.xyz

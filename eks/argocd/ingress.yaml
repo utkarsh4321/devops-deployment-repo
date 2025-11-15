@@ -8,6 +8,9 @@ metadata:
   #   # For Nginx Ingress Controller:
   #   nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
   #   nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
   rules:
     - host: argo.test.xyz # Replace with your desired hostname
