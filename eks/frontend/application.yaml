@@ -9,8 +9,8 @@ spec:
     repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
     targetRevision: main # Or your branch
     path: eks/frontend # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
-    directory:
-      recurse: true
+    # directory:
+    #   recurse: true
   destination:
     server: https://4B9C00A51E382BC3C62E862277E12182.gr7.ap-south-1.eks.amazonaws.com
     namespace: frontend-namespace # Target namespace in the cluster
