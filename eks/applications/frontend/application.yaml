@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: frontend-application
+  name: frontend-application-v5
   namespace: argocd # Argo CD namespace
 spec:
   project: default
@@ -9,10 +9,12 @@ spec:
     repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
     targetRevision: main # Or your branch
     path: eks/frontend # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
-    # directory:
-    #   recurse: true
+    directory:
+      jsonnet: {}
+      recurse: true
   destination:
-    server: https://4B9C00A51E382BC3C62E862277E12182.gr7.ap-south-1.eks.amazonaws.com
+    # server: https://kubernetes.default.svc
+    server: https://D8A9CFC93AB785563E1991F8ADB612B1.gr7.ap-south-1.eks.amazonaws.com
     namespace: frontend-namespace # Target namespace in the cluster
   syncPolicy:
     automated:
