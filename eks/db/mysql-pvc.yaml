@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   # storageClassName: ""
-  storageClassName: standard
+  # storageClassName: gp2
   resources:
     requests:
       storage: 1Gi

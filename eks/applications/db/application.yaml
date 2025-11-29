@@ -9,10 +9,10 @@ spec:
     repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
     targetRevision: main # Or your branch
     path: eks/db # Path in Git containing ALL manifests (Deployment, ConfigMap, Secret)
-    # directory:
-    #   recurse: true
+    directory:
+      recurse: true
   destination:
-    server: https://4B9C00A51E382BC3C62E862277E12182.gr7.ap-south-1.eks.amazonaws.com
+    server: https://4B7E05A5E077ACA956F8EBD998FB73F8.gr7.ap-south-1.eks.amazonaws.com
     namespace: db-namespace # Target namespace in the cluster
   syncPolicy:
     automated:
