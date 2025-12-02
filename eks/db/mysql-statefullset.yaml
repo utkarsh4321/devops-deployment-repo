@@ -42,20 +42,3 @@ spec:
         - name: mysql-data
           persistentVolumeClaim:
             claimName: mysql-pvc
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql-headless-service
-  namespace: db-namespace
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1" # Apply first
-spec:
-  selector:
-    app: mysql
-  ports:
-    - protocol: TCP
-      port: 3306
-      targetPort: 3306
-  clusterIP: None
