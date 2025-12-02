@@ -4,7 +4,7 @@ metadata:
   name: mysql-pvc
   namespace: db-namespace
   annotations:
-    argocd.argoproj.io/sync-wave: "-3" # Apply first
+    argocd.argoproj.io/sync-wave: "-1" # Apply first
 spec:
   accessModes:
     - ReadWriteOnce
