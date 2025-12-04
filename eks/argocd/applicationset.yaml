@@ -18,13 +18,13 @@ spec:
         elements:
           - app: frontend
             folder: frontend
-            ns: frontend-{{.metadata.labels.env}}
+            ns: frontend-namespace
           - app: backend
             folder: backend
-            ns: backend-{{.metadata.labels.env}}
+            ns: backend-namespace
           - app: db
             folder: db
-            ns: db-{{.metadata.labels.env}}
+            ns: db-namespace
           - app: secret-store-applications
             folder: external-secret
             ns: default
