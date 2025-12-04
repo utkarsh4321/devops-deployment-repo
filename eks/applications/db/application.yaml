@@ -12,7 +12,7 @@ spec:
     directory:
       recurse: true
   destination:
-    server: https://4025E77512DE39AA10497E27808D31BF.gr7.ap-south-1.eks.amazonaws.com
+    server: https://kubernetes.default.svc
     namespace: db-namespace # Target namespace in the cluster
   syncPolicy:
     automated:
@@ -24,3 +24,4 @@ spec:
       - PruneLast=true
       - Replace=true # Key for Secrets: Forces delete + recreate on immutable field changes
       - ApplyOutOfSyncOnly=true
+      - PruneTimeout=120s

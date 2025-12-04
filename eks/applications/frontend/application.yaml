@@ -13,7 +13,7 @@ spec:
       recurse: true
   destination:
     # server: https://kubernetes.default.svc
-    server: hhttps://4025E77512DE39AA10497E27808D31BF.gr7.ap-south-1.eks.amazonaws.com
+    server: https://87435092CC6F491699AD2706A1771C44.gr7.ap-south-1.eks.amazonaws.com
     namespace: frontend-namespace # Target namespace in the cluster
   syncPolicy:
     automated:

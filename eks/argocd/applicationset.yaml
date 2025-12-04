@@ -1,0 +1,54 @@
+# File: argocd/applicationset.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: all-apps-all-envs
+  namespace: argocd
+spec:
+  goTemplate: true # Important for {{ }} syntax
+  generators:
+    # This finds every cluster that has the label argocd.env=enabled
+    - clusters:
+        selector:
+          matchLabels:
+            argocd.env: enabled # You add this label to ALL your clusters
+
+    # This creates one copy for each app type
+    - list:
+        elements:
+          - app: frontend
+            folder: frontend
+            ns: frontend-{{.metadata.labels.env}}
+          - app: backend
+            folder: backend
+            ns: backend-{{.metadata.labels.env}}
+          - app: db
+            folder: db
+            ns: db-{{.metadata.labels.env}}
+          - app: secret-store-applications
+            folder: external-secret
+            ns: default
+
+  template:
+    metadata:
+      name: "{{.metadata.labels.env}}-{{app}}" # e.g. dev-frontend, prod-db
+      namespace: argocd
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/utkarsh4321/devops-deployment-repo.git
+        targetRevision: main
+        path: eks/{{app}} # plain folder path
+      destination:
+        server: "{{server}}" # ← AUTOMATICALLY uses the correct cluster URL
+        namespace: "{{ns}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+          - Replace=true # Key for Secrets: Forces delete + recreate on immutable field changes
+          - ApplyOutOfSyncOnly=true
